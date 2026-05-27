@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+
+<style>
+
+body{
+    margin:0;
+    overflow:hidden;
+    background:transparent;
+    font-family:Arial, sans-serif;
+}
+
+.scoreboard{
+    position:absolute;
+
+    top:40px;
+    left:50%;
+
+    transform:translateX(-50%);
+
+    display:flex;
+    align-items:center;
+    gap:30px;
+
+    padding:30px 40px;
+
+    border-radius:30px;
+
+    background:
+    linear-gradient(
+        180deg,
+        rgba(45,45,45,0.96),
+        rgba(10,10,10,0.96)
+    );
+
+    border:2px solid rgba(255,255,255,0.15);
+
+    box-shadow:
+    0 15px 40px rgba(0,0,0,0.6),
+    inset 0 0 30px rgba(255,255,255,0.03);
+}
+
+.scoreBox{
+    width:130px;
+    height:170px;
+
+    background:#050505;
+
+    border-radius:18px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    color:white;
+
+    font-size:110px;
+    font-weight:700;
+
+    cursor:pointer;
+}
+
+.centerPanel{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+
+    gap:18px;
+}
+
+.timer{
+    background:#050505;
+
+    color:white;
+
+    font-size:42px;
+    font-weight:bold;
+
+    padding:12px 30px;
+
+    border-radius:12px;
+}
+
+.resetBtn{
+    border:none;
+
+    background:#111;
+
+    color:white;
+
+    font-size:24px;
+    font-weight:bold;
+
+    padding:14px 30px;
+
+    border-radius:14px;
+
+    cursor:pointer;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="scoreboard">
+
+    <div class="scoreBox" id="scoreA" onclick="addA()">
+        00
+    </div>
+
+    <div class="centerPanel">
+
+        <div class="timer">
+            00:00
+        </div>
+
+        <button class="resetBtn" onclick="resetScore()">
+            RESET
+        </button>
+
+    </div>
+
+    <div class="scoreBox" id="scoreB" onclick="addB()">
+        00
+    </div>
+
+</div>
+
+<script>
+
+let scoreA = 0;
+let scoreB = 0;
+
+function updateUI(){
+
+    document.getElementById("scoreA")
+    .innerText =
+    String(scoreA).padStart(2, '0');
+
+    document.getElementById("scoreB")
+    .innerText =
+    String(scoreB).padStart(2, '0');
+}
+
+function addA(){
+    scoreA++;
+    updateUI();
+}
+
+function addB(){
+    scoreB++;
+    updateUI();
+}
+
+function resetScore(){
+    scoreA = 0;
+    scoreB = 0;
+
+    updateUI();
+}
+
+updateUI();
+
+</script>
+
+</body>
+</html>
